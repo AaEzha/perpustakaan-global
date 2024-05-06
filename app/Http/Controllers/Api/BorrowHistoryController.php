@@ -7,7 +7,7 @@ use App\JsonResponse;
 use App\Models\Borrow;
 use Illuminate\Http\Request;
 
-class BorrowController extends Controller
+class BorrowHistoryController extends Controller
 {
     use JsonResponse;
 
@@ -17,7 +17,7 @@ class BorrowController extends Controller
     public function __invoke(Request $request)
     {
         $data = [];
-        $borrows = Borrow::with('book')->whereNull('returned_at')->where('user_id', auth()->id())->orderByDesc('id')->get();
+        $borrows = Borrow::with('book')->whereNotNull('returned_at')->where('user_id', auth()->id())->orderByDesc('id')->get();
 
         foreach ($borrows as $i => $item) {
             $data[$i]['title'] = $item->book->title;
@@ -27,6 +27,8 @@ class BorrowController extends Controller
             $data[$i]['year_published'] = $item->book->year_published;
             $data[$i]['borrowed_at'] = $item->created_at->format('d F Y, H:i');
             $data[$i]['borrowed_operator'] = $item->created_by;
+            $data[$i]['returned_at'] = $item->returned_at->format('d F Y, H:i');
+            $data[$i]['returned_operator'] = $item->returned_by;
         }
 
         return $this->Ok($data);
