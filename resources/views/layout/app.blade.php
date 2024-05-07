@@ -70,6 +70,18 @@
                     <span>Books</span></a>
             </li>
 
+            <li class="nav-item @if(Route::is('borrows.*')) active @endif">
+                <a class="nav-link" href="{{ route('borrows.index') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Borrows</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('borrows.index') }}">
+                    <i class="fas fa-fw fa-clock"></i>
+                    <span>Borrow History</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
