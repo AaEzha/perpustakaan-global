@@ -64,6 +64,12 @@
                     <span>Users</span></a>
             </li>
 
+            <li class="nav-item @if(Route::is('books.*')) active @endif">
+                <a class="nav-link" href="{{ route('books.index') }}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Books</span></a>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
