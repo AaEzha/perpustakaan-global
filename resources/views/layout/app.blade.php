@@ -70,7 +70,7 @@
                     <span>Books</span></a>
             </li>
 
-            <li class="nav-item @if(Route::is('borrows.*')) active @endif">
+            <li class="nav-item @if(Route::is('borrows.*', 'borrow-books.*')) active @endif">
                 <a class="nav-link" href="{{ route('borrows.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Borrows</span></a>
