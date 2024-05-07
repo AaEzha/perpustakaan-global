@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\BookController;
 use App\Http\Controllers\Web\BorrowBookController;
 use App\Http\Controllers\Web\BorrowController;
+use App\Http\Controllers\Web\BorrowHistoryController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\UserPasswordController;
@@ -20,5 +21,6 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('borrows', BorrowController::class)->except(['edit', 'update', 'show']);
         Route::resource('borrow-books', BorrowBookController::class)->only(['show', 'update']);
+        Route::get('borrow-history', BorrowHistoryController::class)->name('borrow-history');
     });
 });
